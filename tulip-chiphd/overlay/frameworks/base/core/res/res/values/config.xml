@@ -111,7 +111,7 @@
     <bool name="config_useDevInputEventForAudioJack">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
+    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">false</bool>
@@ -182,7 +182,7 @@
         <item>com.google.android.gms</item>
         <item>com.android.location.fused</item>
     </string-array>
-	
+
     <!-- Control the behavior when the user long presses the power button.
             0 - Nothing
             1 - Global actions menu
@@ -225,7 +225,7 @@
             1 - Go to sleep (doze) and go home
     -->
     <integer name="config_shortPressOnSleepBehavior">0</integer>
-	
+
     <!-- Indicate whether closing the lid causes the device to go to sleep
          and opening it causes the device to wake up. The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>

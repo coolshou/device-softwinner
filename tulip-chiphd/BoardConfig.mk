@@ -56,6 +56,7 @@ WITH_BUSYBOX_LINKS := true
 # 1. Wifi Configuration
 # 1.1 realtek wifi support
 # 1.1  realtek wifi configuration
+BOARD_WIFI_8812AU := true
 BOARD_WIFI_VENDOR := realtek
 ifeq ($(BOARD_WIFI_VENDOR), realtek)
     WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -64,16 +65,31 @@ ifeq ($(BOARD_WIFI_VENDOR), realtek)
     BOARD_HOSTAPD_DRIVER        := NL80211
     BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_rtl
 
-    ifeq ($(TARGET_PRODUCT),tulip_chiphd_pinebook)
-        WIFI_DRIVER_MODULE_NAME := "8723cs"
+    ifeq ($(BOARD_WIFI_8812AU),true)
+        PRODUCT_PACKAGES += rtw_fwloader
+        #not use current
+        BOARD_WLAN_DEVICE := rtl8812au
+        RTK_ANDROID_VERSION := nougat
+        WIFI_DRIVER_MODULE_NAME := "8812au"
+        WIFI_DRIVER_MODULE_PATH := "/vendor/modules/8812au.ko"
+        WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0"
+        WIFI_FIRMWARE_LOADER := "rtw_fwloader"
+        WIFI_DRIVER_FW_PATH_STA := "STA"
+        WIFI_DRIVER_FW_PATH_AP := "AP"
+        WIFI_DRIVER_FW_PATH_P2P := "P2P"
+        WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
     else
-        WIFI_DRIVER_MODULE_NAME := "8723bs"
+        ifeq ($(TARGET_PRODUCT),tulip_chiphd_pinebook)
+            WIFI_DRIVER_MODULE_NAME := "8723cs"
+        else
+            WIFI_DRIVER_MODULE_NAME := "8723bs"
+        endif
+
+        WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/$(WIFI_DRIVER_MODULE_NAME).ko"
+        WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0 rtw_power_mgnt=0"
+
+        BOARD_USR_WIFI := rtl8723bs
     endif
-
-    WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/$(WIFI_DRIVER_MODULE_NAME).ko"
-    WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0 rtw_power_mgnt=0"
-
-    BOARD_USR_WIFI := rtl8723bs
 endif
 
 # 1.2 broadcom wifi support

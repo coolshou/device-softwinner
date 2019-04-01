@@ -8,6 +8,29 @@ GAPPS_FORCE_BROWSER_OVERRIDES := true
 PRODUCT_PACKAGES += \
     Launcher3
 
+GAPPS_EXCLUDED_PACKAGES += \
+    CalendarGooglePrebuilt \
+    FaceLock \
+    GoogleBackupTransport \
+    GoogleCalendarSyncAdapter \
+    GoogleContactsSyncAdapter \
+    GoogleFeedback \
+    GoogleLoginService \
+    GoogleNow \
+    GoogleOneTimeInitializer \
+    GooglePackageInstaller \
+    GooglePartnerSetup \
+    GoogleServicesFramework \
+    GoogleTTS \
+    Phonesky \
+    PrebuiltExchange3Google \
+    PrebuiltGmail \
+    PrebuiltGmsCore \
+    PrebuiltGmsCoreInstantApps \
+    SetupWizard \
+    Turbo \
+    Velvet
+
 PRODUCT_COPY_FILES += \
     device/softwinner/common/config/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 
