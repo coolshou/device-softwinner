@@ -1,4 +1,5 @@
 import init.sensors.rc
+import init.wireless.realtek.rc
 
 on init
     # for sensors cache.

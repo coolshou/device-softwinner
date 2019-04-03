@@ -66,12 +66,11 @@ ifeq ($(BOARD_WIFI_VENDOR), realtek)
     BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_rtl
 
     ifeq ($(BOARD_WIFI_8812AU),true)
-        PRODUCT_PACKAGES += rtw_fwloader
         #not use current
         BOARD_WLAN_DEVICE := rtl8812au
         RTK_ANDROID_VERSION := nougat
         WIFI_DRIVER_MODULE_NAME := "8812au"
-        WIFI_DRIVER_MODULE_PATH := "/vendor/modules/8812au.ko"
+        WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/8812au.ko"
         WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0"
         WIFI_FIRMWARE_LOADER := "rtw_fwloader"
         WIFI_DRIVER_FW_PATH_STA := "STA"

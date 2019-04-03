@@ -35,7 +35,8 @@ PRODUCT_PACKAGES += \
 #wifi/bt mac
 PRODUCT_PACKAGES += \
     setmacaddr \
-    setbtmacaddr
+    setbtmacaddr \
+    rtw_fwloader
 
 # xml
 PRODUCT_COPY_FILES += \

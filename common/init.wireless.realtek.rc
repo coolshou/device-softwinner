@@ -1,8 +1,14 @@
 on fs
+    insmod /system/vendor/modules/rtl8812au.ko
     insmod /system/vendor/modules/rtl_btlpm.ko
     setprop wifi.use_customized_macaddr 1
 
 # 1. realtek & eagle wifi service
+service rtw_fwloader /system/bin/rtw_fwloader
+     class main
+     disabled
+     oneshot
+
 # 1.1 realtek & eagle wifi sta service
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
