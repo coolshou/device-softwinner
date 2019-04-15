@@ -28,7 +28,7 @@ on early-fs
     restorecon_recursive /persist
 
     #modules
-    symlink /system/vender/modules /system/lib/modules
+    symlink /system/vendor/modules /system/lib/modules
 
 on fs
     insmod /system/vendor/modules/disp.ko
