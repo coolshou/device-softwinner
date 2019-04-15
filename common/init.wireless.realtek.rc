@@ -1,6 +1,7 @@
 on fs
-    insmod /system/vendor/modules/rtl8812au.ko
-    insmod /system/vendor/modules/rtl_btlpm.ko
+    insmod /system/vendor/modules/8812au.ko
+# bluetooth
+#    insmod /system/vendor/modules/rtl_btlpm.ko
     setprop wifi.use_customized_macaddr 1
 
 # 1. realtek & eagle wifi service
