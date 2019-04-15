@@ -7,6 +7,7 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug/ mode=755
 
 on init
+    alias ll="ls -l"
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
@@ -26,29 +27,32 @@ on early-fs
     swapon_all /fstab.sun50iw1p1
     restorecon_recursive /persist
 
+    #modules
+    symlink /system/vender/modules /system/lib/modules
+
 on fs
     insmod /system/vendor/modules/disp.ko
-	  insmod /system/vendor/modules/sunxi_tr.ko
+    insmod /system/vendor/modules/sunxi_tr.ko
     insmod /system/vendor/modules/hdmi.ko
     insmod /system/vendor/modules/hdmi_cec.ko
 
-	  # secure storage
+    # secure storage
     insmod /system/vendor/modules/te_sec_storage.ko
 
-	  # gpu
+    # gpu
     insmod /system/vendor/modules/mali.ko
 
-	  # sw-keystore
+    # sw-keystore
     mkdir /cache/HWML 0770 root system
     insmod /system/vendor/modules/sunxi_schw.ko
     chmod 0660 /dev/scdev
     chown keystore keystore /dev/scdev
 
-	  # sw-keyboard
+    # sw-keyboard
     insmod /system/vendor/modules/sunxi-keyboard.ko
     insmod /system/vendor/modules/sw-device.ko
 
-	  # csi module
+    # csi module
     insmod /system/vendor/modules/videobuf2-core.ko
     insmod /system/vendor/modules/videobuf2-memops.ko
     insmod /system/vendor/modules/videobuf2-dma-contig.ko
@@ -63,27 +67,27 @@ on fs
     insmod /system/vendor/modules/hm5065.ko
     insmod /system/vendor/modules/s5k4ec.ko
     insmod /system/vendor/modules/gc2155.ko
-    insmod /system/vendor/modules/vfe_v4l2.ko
+#    insmod /system/vendor/modules/vfe_v4l2.ko
 
-	  # network
+    # network
     insmod /system/vendor/modules/usbnet.ko
     insmod /system/vendor/modules/asix.ko
     insmod /system/vendor/modules/qf9700.ko
     insmod /system/vendor/modules/mcs7830.ko
     insmod /system/vendor/modules/rtl8150.ko
     insmod /system/vendor/modules/cdc_ether.ko
-    insmod /system/vendor/modules/smsc75xx.ko
-    insmod /system/vendor/modules/smsc95xx.ko
+#    insmod /system/vendor/modules/smsc75xx.ko
+#    insmod /system/vendor/modules/smsc95xx.ko
 
-	  # bluesleep
+    # bluesleep
     insmod /system/vendor/modules/rtl_btlpm.ko
 
-	  # bluetooth
+    # bluetooth
     # UART device
     chmod 0660 /dev/ttyS1
     chown bluetooth net_bt_stack /dev/ttyS1
 
-	  # power up/down interface
+    # power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
@@ -96,7 +100,7 @@ on fs
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
     write /proc/bluetooth/sleep/lpm 1
 
-	  # to observe dnsmasq.leases file for dhcp information of soft ap.
+    # to observe dnsmasq.leases file for dhcp information of soft ap.
     chown dhcp system /data/misc/dhcp
 
     # disable IPv6
@@ -105,6 +109,10 @@ on fs
     #format_userdata /dev/block/mmcblk0p1 PRIVATE
     #mkdir /mnt/private
     #mount vfat /dev/block/mmcblk0p1 /mnt/private
+    #supersu : system/core/libcutils/fs_config.c
+    # { 06755, AID_ROOT,      AID_ROOT,     0, "system/xbin/su" },
+    # { 07777, AID_ROOT,      AID_ROOT,     0, "system/xbin/daemonsu" },
+    # { 06755, AID_ROOT,      AID_ROOT,     0, "system/xbin/supolicy" },
 
 on property:sys.boot_completed=1
     chown system system /sys/devices/soc.0/1c2ac00.twi/i2c-0/0-0040/runtime_suspend
