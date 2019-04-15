@@ -44,11 +44,13 @@ PRODUCT_PACKAGES += \
     input.evdev.default \
     busybox \
     static_busybox \
-    ethtool \
-    Camera \
-    Bluetooth
-    
-$(call inherit-product, vendor/ayufan-pine64/apps/vendor.mk)
+    ethtool
+#jimmy: we don't have bluetooth & Camera
+#    Camera \
+#    Bluetooth
+
+#$(call inherit-product, vendor/ayufan-pine64/apps/vendor.mk)
+$(call inherit-product, vendor/apps/vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
     device/softwinner/tulip-chiphd/overlay
@@ -87,7 +89,7 @@ PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/wifi_efuse_8723bs-vq0.map:system/etc/wifi/wifi_efuse_8723bs-vq0.map \
     device/softwinner/tulip-chiphd/wifi_efuse_8723cs.map:system/etc/wifi/wifi_efuse_8723cs.map
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     device/softwinner/tulip-chiphd/hawkview/sensor_list_cfg.ini:system/etc/hawkview/sensor_list_cfg.ini
 
 # bootanimation
@@ -98,17 +100,19 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.boot.console=console
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.8723b_bt.used=true
+    ro.product.8723b_bt.used=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.fw.force_adoptable=1 \
     persist.sys.usb.config=mtp,adb \
+    ro.secure=0 \
     ro.adb.secure=0 \
+    persist.service.adb.enable=1 \
     rw.logger=0 \
     persist.sys.root_access=2 # Allow ADB access only
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.firmware=v1.2.5
+    ro.product.firmware=v3.0rc3_2019.04.11
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.zygote.disable_gl_preload=false
@@ -120,7 +124,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ota.server.ip=ota.pine64.org
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.timezone=America/Los_Angeles \
+    persist.sys.timezone=Asia/Taipei \
     persist.sys.country=US \
     persist.sys.language=en
 
