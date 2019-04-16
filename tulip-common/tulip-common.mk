@@ -32,7 +32,8 @@ PRODUCT_PACKAGES +=\
 # PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
 
 PRODUCT_COPY_FILES += \
-    device/softwinner/tulip-common/wpa_supplicant_overlay.conf:/system/etc/wifi/wpa_supplicant_overlay.conf
+    device/softwinner/tulip-common/wpa_supplicant_overlay.conf:/system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/softwinner/tulip-common/p2p_supplicant_overlay.conf:/system/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
     hardware/aw/audio/tulip/audio_policy.conf:system/etc/audio_policy.conf \
