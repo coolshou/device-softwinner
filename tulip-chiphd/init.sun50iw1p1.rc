@@ -49,6 +49,7 @@ on early-fs
     chown wifi wifi /data/misc/wifi
     chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
     
+
 on fs
     insmod /system/vendor/modules/disp.ko
     insmod /system/vendor/modules/sunxi_tr.ko
