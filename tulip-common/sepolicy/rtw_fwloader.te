@@ -1,7 +1,9 @@
 type rtw_fwloader, domain;
-
 type rtw_fwloader_exec, exec_type, vendor_file_type,file_type;
-
 init_daemon_domain(rtw_fwloader)
 
 allow rtw_fwloader vendor_shell_exec:file { entrypoint };
+allow rtw_fwloader proc_net:file { open read write getattr };
+allow rtw_fwloader sysfs:file write;
+allow rtw_fwloader sysfs_devices_system_cpu:file write;
+allow rtw_fwloader sysfs:file open;
