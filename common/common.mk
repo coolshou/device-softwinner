@@ -30,7 +30,8 @@ PRODUCT_PACKAGES += \
     hostapd \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    p2p_supplicant.conf
 
 #wifi/bt mac
 PRODUCT_PACKAGES += \
