@@ -73,10 +73,10 @@
 /sbin/busybox    u:object_r:busybox_exec:s0
 
 #paramopt
-/system/bin/paramopt        u:object_r:paramopt_exec:s0
+#/system/bin/paramopt        u:object_r:paramopt_exec:s0
 
 #for supersu daemonsu
-/system/bin/daemonsu          u:object_r:daemonsu_exec:s0
+#/system/bin/daemonsu          u:object_r:daemonsu_exec:s0
 
 #rtw_fwloader
 /system/bin/rtw_fwloader  u:object_r:rtw_fwloader_exec:s0
