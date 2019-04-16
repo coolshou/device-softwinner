@@ -2,7 +2,9 @@
 # to allow write operation from appdomain
 
 # gpu device labeling
-/dev/mali              u:object_r:gpu_device:s0
+/dev/mali               u:object_r:gpu_device:s0
+/dev/pvr_sync           u:object_r:gpu_device:s0
+/system/vendor/bin/pvrsrvctl u:object_r:pvrsrvctl_exec:s0
 
 # disp device labeling
 /dev/disp               u:object_r:disp_device:s0
@@ -55,8 +57,26 @@
 # sayeye
 /system/bin/sayeye          u:object_r:sayeye_exec:s0
 
+#drmserver
+/dev/te_device              u:object_r:tee_device:s0
+
 # opteearmtz00
 /dev/opteearmtz00              u:object_r:tee_device:s0
 
 # opteearmtz00
 /system/bin/tee_supplicant     u:object_r:optee_exec:s0
+
+# trim
+/system/bin/nand_trim     u:object_r:trim_exec:s0
+
+#busybox
+/sbin/busybox    u:object_r:busybox_exec:s0
+
+#paramopt
+/system/bin/paramopt        u:object_r:paramopt_exec:s0
+
+#for supersu daemonsu
+/system/bin/daemonsu          u:object_r:daemonsu_exec:s0
+
+#rtw_fwloader
+/system/bin/rtw_fwloader  u:object_r:rtw_fwloader_exec:s0
