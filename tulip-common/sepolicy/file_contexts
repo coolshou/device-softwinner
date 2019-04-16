@@ -67,7 +67,7 @@
 /system/bin/tee_supplicant     u:object_r:optee_exec:s0
 
 # trim
-/system/bin/nand_trim     u:object_r:trim_exec:s0
+#/system/bin/nand_trim     u:object_r:trim_exec:s0
 
 #busybox
 /sbin/busybox    u:object_r:busybox_exec:s0
