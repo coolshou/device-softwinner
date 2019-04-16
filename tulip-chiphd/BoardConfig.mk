@@ -74,11 +74,11 @@ ifeq ($(BOARD_WIFI_VENDOR), realtek)
         WIFI_DRIVER_MODULE_NAME := "8812au"
         WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/8812au.ko"
         WIFI_DRIVER_MODULE_ARG := "ifname=wlan0 if2name=p2p0"
-        WIFI_FIRMWARE_LOADER := "rtw_fwloader"
-        WIFI_DRIVER_FW_PATH_STA := "STA"
-        WIFI_DRIVER_FW_PATH_AP := "AP"
-        WIFI_DRIVER_FW_PATH_P2P := "P2P"
-        WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
+        WIFI_FIRMWARE_LOADER := ""
+        #WIFI_DRIVER_FW_PATH_STA := "STA"
+        #WIFI_DRIVER_FW_PATH_AP := "AP"
+        #WIFI_DRIVER_FW_PATH_P2P := "P2P"
+        #WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
 
         BOARD_USR_WIFI := rtl8812au
     else
