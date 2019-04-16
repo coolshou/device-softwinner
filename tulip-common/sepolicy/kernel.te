@@ -14,4 +14,5 @@ allow kernel wifi_data_file:file { read open };
 allow kernel kernel:netlink_route_socket create;
 
 allow kernel tmpfs:file {create write open};
+allow kernel tmpfs:dir {add_name};
 
