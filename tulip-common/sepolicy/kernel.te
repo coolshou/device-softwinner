@@ -12,3 +12,5 @@ allow kernel untrusted_app_tmpfs:file { write };
 allow kernel wifi_data_file:dir { read search open };
 allow kernel wifi_data_file:file { read open };
 allow kernel kernel:netlink_route_socket create;
+
+allow kernel tmpfs:file {create add_name write open};
