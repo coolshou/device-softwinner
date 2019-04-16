@@ -27,29 +27,6 @@ on early-fs
     swapon_all /fstab.sun50iw1p1
     restorecon_recursive /persist
 
-    #modules
-    symlink /system/vendor/modules /system/lib/modules
-    
-    # Prepare for wifi
-    chmod 777 /data/misc/keystore
-
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-
-    mkdir /system/etc/wifi 0770 wifi wifi
-    chmod 0770 /system/etc/wifi
-    chmod 0660 /system/etc/wifi/wpa_supplicant.conf
-    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
-    
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    chmod 0770 /data/misc/wifi
-    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-    # chmod 0660 /data/misc/wifi/p2p_supplicant.conf
-    chown wifi wifi /data/misc/wifi
-    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
-    
-
 on fs
     insmod /system/vendor/modules/disp.ko
     insmod /system/vendor/modules/sunxi_tr.ko
@@ -106,6 +83,28 @@ on fs
     # UART device
     chmod 0660 /dev/ttyS1
     chown bluetooth net_bt_stack /dev/ttyS1
+
+    #modules path
+    symlink /system/vendor/modules /system/lib/modules
+    
+    # Prepare for wifi
+    chmod 777 /data/misc/keystore
+
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+    mkdir /system/etc/wifi 0770 wifi wifi
+    chmod 0770 /system/etc/wifi
+    chmod 0660 /system/etc/wifi/wpa_supplicant.conf
+    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
+    
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    chmod 0770 /data/misc/wifi
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    # chmod 0660 /data/misc/wifi/p2p_supplicant.conf
+    chown wifi wifi /data/misc/wifi
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
 
     # power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
