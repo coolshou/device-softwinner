@@ -4,7 +4,7 @@
 # gpu device labeling
 /dev/mali               u:object_r:gpu_device:s0
 /dev/pvr_sync           u:object_r:gpu_device:s0
-/system/vendor/bin/pvrsrvctl u:object_r:pvrsrvctl_exec:s0
+#/system/vendor/bin/pvrsrvctl u:object_r:pvrsrvctl_exec:s0
 
 # disp device labeling
 /dev/disp               u:object_r:disp_device:s0
