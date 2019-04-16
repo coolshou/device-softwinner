@@ -7,7 +7,7 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug/ mode=755
 
 on init
-    alias ll="ls -l"
+    exec u:r:su:s0 root -- /sbin/busybox alias ll="ls -l"
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
@@ -17,7 +17,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
     mkdir /oem 0550 system system
-    
+
 on early-fs
     insmod nand.ko
 
@@ -86,25 +86,6 @@ on fs
 
     #modules path
     symlink /system/vendor/modules /system/lib/modules
-    
-    # Prepare for wifi
-    chmod 777 /data/misc/keystore
-
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-
-    mkdir /system/etc/wifi 0770 wifi wifi
-    chmod 0770 /system/etc/wifi
-    chmod 0660 /system/etc/wifi/wpa_supplicant.conf
-    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
-    
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    chmod 0770 /data/misc/wifi
-    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-    # chmod 0660 /data/misc/wifi/p2p_supplicant.conf
-    chown wifi wifi /data/misc/wifi
-    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
 
     # power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -155,6 +136,26 @@ on post-fs-data
     chown bluetooth net_bt_stack /system/etc/bluetooth
     chown bluetooth net_bt_stack /data/misc/bluetooth
     setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bdaddr"
+
+    # Prepare for wifi
+    chmod 777 /data/misc/keystore
+
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+    mkdir /system/etc/wifi 0770 wifi wifi
+    chmod 0770 /system/etc/wifi
+    chmod 0660 /system/etc/wifi/wpa_supplicant.conf
+    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
+
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    chmod 0770 /data/misc/wifi
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    chmod 0660 /data/misc/wifi/p2p_supplicant.conf
+    chown wifi wifi /data/misc/wifi
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
+
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
     # to force to start sdcard
