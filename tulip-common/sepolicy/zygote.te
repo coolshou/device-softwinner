@@ -1,1 +1,2 @@
 allow zygote zygote:process execmem;
+allow zygote debugfs:file {getattr write open};
