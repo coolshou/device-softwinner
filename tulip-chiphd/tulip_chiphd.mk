@@ -36,6 +36,11 @@ PRODUCT_PACKAGES += \
 #    Velvet
 #cameraserver
 
+#wpa_supplicant config
+PRODUCT_COPY_FILES += \
+    device/softwinner/tulip-common/wpa_supplicant.conf:/data/misc/wifi/wpa_supplicant.conf \
+    device/softwinner/tulip-common/p2p_supplicant.conf:/data/misc/wifi/p2p_supplicant.conf
+
 PRODUCT_COPY_FILES += \
     device/softwinner/common/config/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 
