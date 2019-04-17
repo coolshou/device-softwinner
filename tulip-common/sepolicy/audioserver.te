@@ -1,4 +1,4 @@
 allow audioserver sysfs:file {open read};
 allow audioserver kernel:system {module_request };
 allow audioserver rootfs:lnk_file {getattr };
-allow audioserver debugfs:file {open write };
+# allow audioserver debugfs:file {open write };
