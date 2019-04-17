@@ -5,8 +5,8 @@ PRODUCT_COPY_FILES += \
     device/softwinner/common/init.common.rc:root/init.common.rc \
     device/softwinner/common/init.sensors.rc:root/init.sensors.rc \
     device/softwinner/common/ueventd.common.rc:root/ueventd.common.rc \
-	device/softwinner/common/init.wireless.broadcom.rc:root/init.wireless.broadcom.rc \
-	device/softwinner/common/init.wireless.realtek.rc:root/init.wireless.realtek.rc \
+	device/softwinner/common/init.wireless.realtek.rc:root/init.wireless.realtek.rc
+#	device/softwinner/common/init.wireless.broadcom.rc:root/init.wireless.broadcom.rc
 
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -16,9 +16,9 @@ endif
 
 # preinstall apk
 #PRODUCT_PACKAGES += \
-    DragonFire \
-    DragonPhone \
-    DragonAging \
+#    DragonFire \
+#    DragonPhone \
+#    DragonAging \
 
 # usb
 PRODUCT_PACKAGES += \
@@ -28,10 +28,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
+    hostapd_cli \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    p2p_supplicant.conf
+    wpa_cli
+#    wpa_supplicant.conf \
+#    p2p_supplicant.conf
 
 #wifi/bt mac
 PRODUCT_PACKAGES += \
