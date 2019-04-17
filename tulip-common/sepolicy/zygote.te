@@ -1,2 +1,4 @@
 allow zygote zygote:process execmem;
+#allow zygote debugfs:file {getattr open write};
 allow zygote debugfs:file {getattr};
+allow zygote zygote:capability sys_nice;

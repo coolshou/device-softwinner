@@ -1,3 +1,4 @@
 # wpa_supplicant
 allow wpa devpts:chr_file rw_file_perms;
 allow wpa init:unix_dgram_socket rw_socket_perms;
+allow wpa wifi_data_file:lnk_file read;
